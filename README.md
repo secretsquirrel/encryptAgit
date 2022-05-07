@@ -28,7 +28,7 @@ I wanted to see how hard it would be to write something from scratch with reason
 
 ## Threat model
 
-My threat model does not include [Mosad](https://www.usenix.org/system/files/1401_08-12_mickens.pdf).
+My threat model does not include [Mossad](https://www.usenix.org/system/files/1401_08-12_mickens.pdf).
 
 If someone is on your computer capturing keystrokes, this won't help you.
 

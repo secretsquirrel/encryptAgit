@@ -175,6 +175,95 @@ README.md
 Any files you put in .gitignore will not be encrypted, deleted, or saved. You have to git add, commit, and push those yourself.
 
 
+### Ending the process and changing password
+
+Hit CTRL+C and you will be asked if you want to rotate your salt/password.
+
+Type `n` if you don't, `y` if you do.
+
+```
+encryptAgit
+😊 Welcome Back to encryptAGit! Let's decrypt your repo!
+🧂Enter your salt:
+🕵️ Enter your password:
+[*] It took 1.0983080863952637 seconds to make the key.
+[*] Writing decrypted moo.txt to disk.
+[*] Writing decrypted hello.txt to disk.
+[*] Writing decrypted pictures/kailua_beach.png to disk.
+[*] Writing decrypted pictures/washington_monument.png to disk.
+[*] Writing decrypted newdir/newfile.txt to disk.
+[*] Writing decrypted notes/unencryped.txt to disk.
+[*] Writing decrypted notes/testing.txt to disk.
+[*] Writing decrypted notes/1/more.txt to disk.
+^C
+💭 Do you want to change your salt and password? (y/n):
+```
+If you want to backout completely without erasing your UNENCRYPTED files type CTRL+C twice in a row.
+
+```
+encryptAgit
+😊 Welcome Back to encryptAGit! Let's decrypt your repo!
+🧂Enter your salt:
+🕵️ Enter your password:
+[*] It took 1.0983080863952637 seconds to make the key.
+[*] Writing decrypted moo.txt to disk.
+[*] Writing decrypted hello.txt to disk.
+[*] Writing decrypted pictures/kailua_beach.png to disk.
+[*] Writing decrypted pictures/washington_monument.png to disk.
+[*] Writing decrypted newdir/newfile.txt to disk.
+[*] Writing decrypted notes/unencryped.txt to disk.
+[*] Writing decrypted notes/testing.txt to disk.
+[*] Writing decrypted notes/1/more.txt to disk.
+^C
+💭 Do you want to change your salt and password? (y/n):^CTraceback (most recent call last):
+  File "/Users/pioneer/homebrew/lib/python3.9/site-packages/encryptAgit.py", line 339, in run
+    time.sleep(1)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pioneer/homebrew/bin/encryptAgit", line 8, in <module>
+    sys.exit(main())
+  File "/Users/pioneer/homebrew/lib/python3.9/site-packages/encryptAgit.py", line 361, in main
+    run.run()
+  File "/Users/pioneer/homebrew/lib/python3.9/site-packages/encryptAgit.py", line 346, in run
+    answer = input('\n💭 Do you want to change your salt and password? (y/n):')
+KeyboardInterrupt
+
+```
+
+Feel free to continue editing the files and start encryptAgit again, if there were no edits to the decrypted files you won't get a warning:
+
+```
+encryptAgit
+😊 Welcome Back to encryptAGit! Let's decrypt your repo!
+🧂Enter your salt:
+🕵️ Enter your password:
+[*] It took 1.073664903640747 seconds to make the key.
+^C  
+💭 Do you want to change your salt and password? (y/n):n
+
+[*] Exiting
+👋 Removing unencrypted files not in .gitignore
+```
+
+If you edit the files without encryptAgit running you'll be asked to overwrite the newer file or not after running encryptAgit again:
+
+```
+➜  git-notes git:(main) ✗ vim moo.txt
+➜  git-notes git:(main) ✗ encryptAgit              
+😊 Welcome Back to encryptAGit! Let's decrypt your repo!
+🧂Enter your salt:
+🕵️ Enter your password:
+[*] It took 1.0608000755310059 seconds to make the key.
+[!] moo.txt has changed since last encryption
+[!!] Seems the file on disk has changed from the encrypted file, overwrite it from the encrypted version? (y/n):n
+[*] Updating moo.txt in encrypted store.
+[*] Writing updated encrypted_git.json
+[*] Push of encrypted_git.json complete!
+```
+
 ## Enjoy
 
 Please submit any bugs reports to the github repo...

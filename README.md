@@ -132,7 +132,7 @@ This works best in a *fresh git repo*. I haven't implemented git history squashi
 Maybe I'll implement git history squashing/deletion in a new release. 
 
 1. git clone your notes repo
-2. change directory to it.
+2. Change directory to it.
 3. Execute `encryptAgit.py`
 
 ```

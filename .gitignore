@@ -2,3 +2,5 @@
 *.pyc
 build/
 dist/
+encryptAgit/src/encryptAgit.egg-info/
+

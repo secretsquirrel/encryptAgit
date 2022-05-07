@@ -127,7 +127,7 @@ Not really. [Fernet](https://github.com/fernet/spec/blob/master/Spec.md) is AES-
 
 ## Usage
 
-This works best in a *fresh git repo*. I haven't implemented git history squashing yet. So any old files will be in your get history.
+This works best in a *fresh git repo*. I haven't implemented git history squashing yet. So any old files will be in your git history.
 
 Maybe I'll implement git history squashing/deletion in a new release. 
 
@@ -136,7 +136,7 @@ Maybe I'll implement git history squashing/deletion in a new release.
 3. Execute `encryptAgit.py`
 
 ```
-encryptAGit.py
+encryptAGit
 😄 No encrypted_git.json file, seems like first use!
 🤗 Welcome to encryptAGit! Let's encrypt your repo!
 🤓 Use a passphrase for both salt and password. Remember what you enter!

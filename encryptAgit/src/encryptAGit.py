@@ -194,7 +194,7 @@ class encryptAGit:
 
     def unload_json(self):
         '''
-        Return True if files were updates since last save
+        Return True if files were updated since last save
         '''
         updates = False
 

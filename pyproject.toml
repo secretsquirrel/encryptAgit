@@ -1,0 +1,8 @@
+[build-system]
+requires = [
+    "GitPython",
+    "pathlib",
+    "cryptography",
+    "pathspec"
+]
+build-backend = "setuptools.build_meta"

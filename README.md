@@ -274,4 +274,6 @@ Please submit any bugs reports to the github repo...
 
 ## TODO
 
-Add git history squashing option on user password change.
+* Add git history squashing option on user password change.
+* Video on example usage
+* Inspection of encrypted files before overwrite of new file or not

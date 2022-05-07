@@ -233,7 +233,10 @@ KeyboardInterrupt
 
 ```
 
-Feel free to continue editing the files and start encryptAgit again, if there were no edits to the decrypted files you won't get a warning:
+#Editing files offline
+
+Let's say to do a double CTRL+C and want to edit files offline - feel free to do so! 
+THen later start encryptAgit again, if there were no edits to the decrypted files you won't get a warning:
 
 ```
 encryptAgit

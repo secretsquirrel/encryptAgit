@@ -343,7 +343,9 @@ class encryptAGit:
         except KeyboardInterrupt:
             answer = ''
             while answer.lower() not in ['y','n']:
-                answer = input('\n💭 Do you want to change your salt and password? (y/n):')
+                answer = input("""\n[!] Hit CRTL+C again to leave unencrypted files on disk for offline working (Ex: no Internet access).
+ 💭 Do you want to change your salt and password? (y/n):\n
+""")
 
             if answer.lower() == 'y':
                 self.set_keying_material()

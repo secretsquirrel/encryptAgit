@@ -23,6 +23,7 @@ class encryptAGit:
         self.key = b''
         self.salt = b''
         self.decoded_json = {}
+        self.commit_counter = 0
         self.do_not_ecrypt = ['.gitignore',
                               'encryptAGit.py',
                               'encrypted_git.json'
@@ -227,17 +228,34 @@ class encryptAGit:
         '''
         This will attempt to commit and push encrypted_git.json... that's it
         '''
+
         try:
             repo = Repo()
             changed_files = [item.a_path for item in repo.index.diff(None)]
             if 'encrypted_git.json' in changed_files:
                 repo.git.add('encrypted_git.json')
                 repo.index.commit(datetime.datetime.now().isoformat())
+
+        except Exception as e:
+            print(f'[!!] No valid .git directory here? Exiting...')
+            os.remove('encrypted_git.json')
+            sys.exit(-1)
+
+        # warn the user on pushing errors.. but not every second.
+        try:
+            git = repo.git
+            if 'branch is ahead' in git.status():
                 origin = repo.remote(name='origin')
                 origin.push()
                 print('[*] Push of encrypted_git.json complete!')
+                self.commit_counter = 0
+
         except Exception as e:
-            print(f'[!!] Do you have a valid .git directory here?')
+            self.commit_counter += 1
+            if self.commit_counter == 1:
+                print(f'⚠️ Issues with commiting... your files are not backed up:\n\tError: {e}')
+            if self.commit_counter % 60 == 0:
+                print(f'⚠️ Issues with commiting... your files are not backed up:\n\tError: {e}')
 
     def update_json(self):
         '''

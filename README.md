@@ -272,6 +272,11 @@ If you edit the files without encryptAgit running you'll be asked to overwrite t
 Please submit any bugs reports to the github repo...
 
 
+## Considerations 
+
+GitHub repo and file size [limits](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
+
+
 ## TODO
 
 * Add git history squashing option on user password change.

@@ -199,6 +199,11 @@ class encryptAGit:
         '''
         updates = False
 
+        # key check, check one file, if salt/key fail exit program.
+        for _afile, _values in self.decoded_json.items():
+            _decrypted_file = self.decrypt_file(_values['token'])
+            break
+
         for afile, values in self.decoded_json.items():
             # check if file on disk
             # if not on disk, decrypt it

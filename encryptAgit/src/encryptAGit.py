@@ -229,6 +229,21 @@ class encryptAGit:
 
         return updates
 
+
+    def git_setup(self):
+        '''
+        Make sure encrypted_git is added to repo
+        '''
+
+        try:
+            repo = Repo()
+            git = repo.git
+            git.add('encrypted_git.json')
+        except Exception as e:
+            print(f'[!!] No valid .git directory here? Exiting...')
+            os.remove('encrypted_git.json')
+            sys.exit(-1)
+
     def git_commit(self):
         '''
         This will attempt to commit and push encrypted_git.json... that's it
@@ -249,6 +264,7 @@ class encryptAGit:
         # warn the user on pushing errors.. but not every second.
         try:
             git = repo.git
+
             if 'branch is ahead' in git.status():
                 origin = repo.remote(name='origin')
                 origin.push()
@@ -347,12 +363,14 @@ class encryptAGit:
             print("🤓 Use a passphrase for both salt and password. Remember what you enter!")
             self.set_keying_material()
             self.update_json()
+            self.git_setup()
             # create encrypted_git.json
 
         else:
             print("😊 Welcome Back to encryptAGit! Let's decrypt your repo!")
             self.set_keying_material()
             files_to_update = self.unload_json()
+            self.git_setup()
             if files_to_update:
                 self.update_json()
 

@@ -269,7 +269,7 @@ If you edit the files without encryptAgit running you'll be asked to overwrite t
 
 ## Enjoy
 
-Please submit any bugs reports to the github repo...
+Please submit any bug reports to the github repo...
 
 
 ## Considerations 

@@ -11,6 +11,12 @@ Encrypt Your Git Repos
 pip install encryptAgit
 ```
 
+## Upgrade
+
+```
+pip install encryptAgit --upgrade
+```
+
 ## Requirements
 
 * GitPython

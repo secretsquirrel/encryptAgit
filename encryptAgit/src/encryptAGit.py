@@ -156,7 +156,7 @@ class encryptAGit:
             return decrypted_file
 
         except Exception as e:
-            print('Invalid key! try again!')
+            print('⚠️  Invalid key! try again!')
             sys.exit(-1)
 
     def encryption_key(self, user_salt, password):
@@ -177,7 +177,7 @@ class encryptAGit:
             start = time.time()
             self.key = base64.urlsafe_b64encode(kdf.derive(bytes(password, 'iso-8859-1')))
             end = time.time()
-            print(f"[*] It took {end - start} seconds to make the key.")
+            print(f"💻 It took {end - start} seconds to make the key.")
             return True
 
         except Exception as e:
@@ -204,6 +204,8 @@ class encryptAGit:
             _decrypted_file = self.decrypt_file(_values['token'])
             break
 
+        print(f"🔓 Salt/Password combo verified!")
+
         for afile, values in self.decoded_json.items():
             # check if file on disk
             # if not on disk, decrypt it
@@ -228,7 +230,6 @@ class encryptAGit:
                                 f.write(decrypted_file)
 
         return updates
-
 
     def git_setup(self):
         '''
@@ -268,7 +269,7 @@ class encryptAGit:
             if 'branch is ahead' in git.status():
                 origin = repo.remote(name='origin')
                 origin.push()
-                print('[*] Push of encrypted_git.json complete!')
+                print('☁️ Push of encrypted_git.json complete!')
                 self.commit_counter = 0
 
         except Exception as e:
@@ -335,11 +336,43 @@ class encryptAGit:
         self.key = b''
         self.salt = b''
 
+    def set_salt_password(self):
+        while True:
+            user_salt = getpass.getpass(prompt='🧂Enter your salt:',
+                                stream=None)
+            user_salt2 = getpass.getpass(prompt='🧂Enter your salt again for verification:',
+                                stream=None)
+            if user_salt == user_salt2:
+                break
+
+        while True:
+            password = getpass.getpass(prompt='🕵️ Enter your password:',
+                               stream=None)
+            password2 = getpass.getpass(prompt='🕵️ Enter your password again for verification:',
+                               stream=None)
+
+            if password == password2:
+                break
+
+        if not self.encryption_key(user_salt, password):
+            print('🤔 hmmm, exiting...')
+            sys.exit(-1)
+
+        print(f"🔐 Salt and password set!")
+        password = ''
+        password2 = ''
+        user_salt = ''
+        user_salt2 = ''
+
+
     def set_keying_material(self):
+        # add double entry for verification
+
         user_salt = getpass.getpass(prompt='🧂Enter your salt:',
-                            stream=None)
+                                stream=None)
+
         password = getpass.getpass(prompt='🕵️ Enter your password:',
-                           stream=None)
+                               stream=None)
 
         if not self.encryption_key(user_salt, password):
             print('🤔 hmmm, exiting...')
@@ -361,7 +394,7 @@ class encryptAGit:
         if not self.check_json():
             print("🤗 Welcome to encryptAGit! Let's encrypt your repo!")
             print("🤓 Use a passphrase for both salt and password. Remember what you enter!")
-            self.set_keying_material()
+            self.set_salt_password()
             self.update_json()
             self.git_setup()
             # create encrypted_git.json
@@ -389,7 +422,7 @@ class encryptAGit:
 """)
 
             if answer.lower() == 'y':
-                self.set_keying_material()
+                self.set_salt_password()
                 os.remove('encrypted_git.json')
 
             print('\n[*] Exiting')

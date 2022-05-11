@@ -299,7 +299,7 @@ class encryptAGit:
 
             with open('encrypted_git.json', 'w') as f:
                 print('[*] Writing updated encrypted_git.json')
-                to_write = json.dumps(self.decoded_json)
+                to_write = json.dumps(self.decoded_json, indent=4, sort_keys=True)
                 f.write(to_write)
 
     def check_json(self):

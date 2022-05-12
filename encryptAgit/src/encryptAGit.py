@@ -235,7 +235,7 @@ class encryptAGit:
         '''
         Make sure encrypted_git is added to repo
         '''
-        open('encrypted_git.json', 'w')
+        open('encrypted_git.json', 'a')
 
         try:
             repo = Repo()

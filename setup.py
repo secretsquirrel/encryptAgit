@@ -25,7 +25,7 @@ setuptools.setup(
         'pathlib',
         'GitPython',
         'cryptography'
-        ]
+        ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

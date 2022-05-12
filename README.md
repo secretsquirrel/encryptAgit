@@ -32,6 +32,14 @@ I wanted to see how hard it would be to write something from scratch with reason
 
 ..That I wouldn't mind using.
 
+I'm using encryptAgit as a note taking app. I can use whatever editor I want. Sublime Text, vim, emacs, 
+VS Code. Whatever that writes files to disk. 
+
+You could use encryptAgit to keep your notes/code private, but yet public,
+and share the key with only people you want to have access.
+
+Feel free to share how you are using it!
+
 ## Threat model
 
 My threat model does not include [Mossad](https://www.usenix.org/system/files/1401_08-12_mickens.pdf).

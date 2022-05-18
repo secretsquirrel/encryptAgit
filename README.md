@@ -1,3 +1,5 @@
+[![Downloads](https://static.pepy.tech/personalized-badge/encryptagit?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/encryptagit)
+
 # EncryptAGit
 Encrypt Your Git Repos
 
